@@ -11,9 +11,9 @@ from email.mime.text import MIMEText
 from datetime import datetime
 
 # ── Leitura das variáveis de ambiente ──────────────────────────────────────
-NOTIFY_EMAIL   = os.environ["NOTIFY_EMAIL"]      # GitHub Variable (vars.)
-SMTP_USER      = os.environ["SMTP_USER"]          # GitHub Secret
-SMTP_PASSWORD  = os.environ["SMTP_PASSWORD"]      # GitHub Secret
+NOTIFY_EMAIL   = os.environ["NOTIFY_EMAIL"].strip()      # GitHub Variable (vars.)
+SMTP_USER      = os.environ["SMTP_USER"].strip()          # GitHub Secret
+SMTP_PASSWORD  = os.environ["SMTP_PASSWORD"].strip()      # GitHub Secret
 SMTP_HOST      = os.environ.get("SMTP_HOST", "smtp.gmail.com")
 SMTP_PORT      = int(os.environ.get("SMTP_PORT", "587"))
 
