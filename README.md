@@ -5,8 +5,12 @@
 Pipeline de CI/CD com testes automatizados para a API REST **Los-Gehts-backend**, construída com **FastAPI**, **PostgreSQL** e **Prisma** (Python).
 
 ---
-# Rodando o projeto
+
+## Integrantes:
+Victor Arruda Gorgal - 524
+Nathália Aparecida Almeida Costa - 508
 ---
+# Rodando o projeto
 ## Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado:
