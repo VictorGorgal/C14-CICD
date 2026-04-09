@@ -12,6 +12,10 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libatomic1 \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copia dependências já instaladas
 COPY --from=builder /install /usr/local
 
