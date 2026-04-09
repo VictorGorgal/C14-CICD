@@ -111,7 +111,10 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           COMMIT_SHA: ${{ github.sha }}
           BRANCH: ${{ github.ref_name }}
-        run: python scripts/notify.py
+        run: |
+          echo "NOTIFY_EMAIL='${NOTIFY_EMAIL}'"
+          echo "SMTP_USER='${SMTP_USER}'"
+          python scripts/notify.py
 
   # ────────────────────────────────────────────────
   # JOB 4: Deploy - GitHub Releases
