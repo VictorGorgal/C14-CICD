@@ -7,8 +7,8 @@ Pipeline de CI/CD com testes automatizados para a API REST **Los-Gehts-backend**
 ---
 
 ## Integrantes:
-Victor Arruda Gorgal - 524
-Nathália Aparecida Almeida Costa - 508
+- Victor Arruda Gorgal - 524
+- Nathália Aparecida Almeida Costa - 508
 ---
 # Rodando o projeto
 ## Pré-requisitos
