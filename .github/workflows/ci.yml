@@ -83,14 +83,45 @@ jobs:
           path: /tmp/image.tar
 
   # ────────────────────────────────────────────────
-  # JOB 3: Deploy - GitHub Releases
+  # JOB 3: Notificação por e-mail
+  # Roda em PARALELO com o build (ambos dependem de test)
+  # ────────────────────────────────────────────────
+  notify:
+    name: Notificação
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()   # roda mesmo se test falhar
+
+    steps:
+      - name: Checkout do repositório CI/CD
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Enviar notificação por e-mail
+        env:
+          NOTIFY_EMAIL: ${{ vars.NOTIFY_EMAIL }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          PIPELINE_STATUS: ${{ needs.test.result }}
+          REPO_NAME: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_SHA: ${{ github.sha }}
+          BRANCH: ${{ github.ref_name }}
+        run: python scripts/notify.py
+
+  # ────────────────────────────────────────────────
+  # JOB 4: Deploy - GitHub Releases
   # Depende do build E do notify (garante que só
   # versões válidas são publicadas)
   # ────────────────────────────────────────────────
   deploy:
     name: Deploy - GitHub Release
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, notify]
     if: needs.build.result == 'success'
 
     steps:
