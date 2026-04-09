@@ -1,0 +1,51 @@
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+pip-wheel-metadata/
+
+# ── Ambientes virtuais ────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# ── Variáveis de ambiente ─────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Prisma ────────────────────────────────────────────────────────────────
+# Cliente gerado automaticamente — não versionar
+prisma/migrations/**/migration_lock.toml
+
+# ── Testes e cobertura ────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+reports/
+
+# ── Docker ────────────────────────────────────────────────────────────────
+*.tar
+
+# ── IDEs ──────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Logs ──────────────────────────────────────────────────────────────────
+*.log
+logs/
